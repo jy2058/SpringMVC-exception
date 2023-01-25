@@ -56,17 +56,6 @@ public class ErrorPageController {
         return new ResponseEntity(result, HttpStatus.valueOf(statusCode));
 
     }
-
-    @GetMapping("/api/response-status-ex1")
-    public String responseStatusEx1(){
-        throw new BadRequestException();
-    }
-
-    @GetMapping("/api/response-status-ex2")
-    public String responseStatusEx2(){
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "error.bad", new IllegalArgumentException());
-    }
-
     private void printErrorInfo(HttpServletRequest request) {
         log.info("ERROR_EXCEPTION: ex=", request.getAttribute(ERROR_EXCEPTION));
         log.info("ERROR_EXCEPTION_TYPE: {}", request.getAttribute(ERROR_EXCEPTION_TYPE));
